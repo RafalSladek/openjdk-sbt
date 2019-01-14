@@ -9,6 +9,7 @@ RUN yum fs filter languages en && \
     yum -y update && \
     yum -y reinstall glibc-common && \
     yum install -y tar.x86_64 && \
+    yum install -y gzip && \
     yum clean all
 
 # Install latest version of OpenJDK 8
