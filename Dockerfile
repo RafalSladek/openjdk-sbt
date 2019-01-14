@@ -17,9 +17,7 @@ RUN yum -y install java-1.8.0-openjdk-devel && \
     yum clean all
 
 # Remove setuid bit from all files
-RUN for i in `find / -perm +6000 -type f`; do chmod a-s $i; done
-
-COPY files/fast/maven-settings.xml /root/.m2/settings.xml
+RUN for i in `find / -perm /6000 -type f`; do chmod a-s $i; done
 
 RUN yum install -y which && \
     # maven
@@ -40,5 +38,4 @@ RUN yum install -y which && \
     # echo "export PATH=$PATH:/opt/gradle/gradle-${GRADLE_VERSION}/bin:/root/apache-maven-${MAVEN_VERSION}/bin" >> ~/.bash_profile && \
     # echo "export PATH=$PATH:/opt/gradle/gradle-${GRADLE_VERSION}/bin:/root/apache-maven-${MAVEN_VERSION}/bin" >> ~/.bashrc && \
     # echo "export PATH=$PATH:/opt/gradle/gradle-${GRADLE_VERSION}/bin:/root/apache-maven-${MAVEN_VERSION}/bin" >> /etc/profile.d/fizz.sh
-    
-    
+ 
